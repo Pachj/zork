@@ -1,2 +1,2 @@
 # zork
-part of BBW Module 226A
+Part of BBW Module 226A in cooperation with Module 426.
