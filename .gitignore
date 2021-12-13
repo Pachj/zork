@@ -2,3 +2,5 @@
 target
 .settings
 .metadata
+.DS_Store
+Zork-Start.iml
