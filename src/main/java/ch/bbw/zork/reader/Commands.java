@@ -69,6 +69,11 @@ public class Commands {
             Room currentRoom = rooms.get(currentRoomName);
             Map<RoomName, Room> nearbyRooms = currentRoom.getDoors();
             String roomInput = words[1];
+            if (nearbyRooms.containsKey(RoomName.fromString(roomInput))) {
+                player.setCurrentRoom(nearbyRooms.get(RoomName.fromString(roomInput)));
+            }
+        } else {
+            System.out.println("Bitte gebe einen Raum an!");
         }
     }
 
