@@ -119,4 +119,58 @@ public class Game {
             winningItems.add(items.get(random));
         }
     }
+
+    public void start() {
+        System.out.println(
+                "  _                     _ _             \n" +
+                " | |                   | (_)            \n" +
+                " | |     ___   __ _  __| |_ _ __   __ _ \n" +
+                " | |    / _ \\ / _` |/ _` | | '_ \\ / _` |\n" +
+                " | |___| (_) | (_| | (_| | | | | | (_| |\n" +
+                " |______\\___/ \\__,_|\\__,_|_|_| |_|\\__, |\n" +
+                "                                   __/ |\n" +
+                "                                  |___/ \n");
+        for (int i = 0; i < 79; i++) {
+            System.out.print("*");
+            sleep((long) (Math.random() * 100));
+        }
+        System.out.println("\n\n\n");
+
+        System.out.println(
+                "ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO     RRRRRRRRRRRRRRRRR   KKKKKKKKK    KKKKKKK\n" +
+                "Z:::::::::::::::::Z   OO:::::::::OO   R::::::::::::::::R  K:::::::K    K:::::K\n" +
+                "Z:::::::::::::::::Z OO:::::::::::::OO R::::::RRRRRR:::::R K:::::::K    K:::::K\n" +
+                "Z:::ZZZZZZZZ:::::Z O:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K\n" +
+                "ZZZZZ     Z:::::Z  O::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK\n" +
+                "        Z:::::Z    O:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   \n" +
+                "       Z:::::Z     O:::::O     O:::::O  R::::RRRRRR:::::R   K::::::K:::::K    \n" +
+                "      Z:::::Z      O:::::O     O:::::O  R:::::::::::::RR    K:::::::::::K     \n" +
+                "     Z:::::Z       O:::::O     O:::::O  R::::RRRRRR:::::R   K:::::::::::K     \n" +
+                "    Z:::::Z        O:::::O     O:::::O  R::::R     R:::::R  K::::::K:::::K    \n" +
+                "   Z:::::Z         O:::::O     O:::::O  R::::R     R:::::R  K:::::K K:::::K   \n" +
+                "ZZZ:::::Z     ZZZZZO::::::O   O::::::O  R::::R     R:::::RKK::::::K  K:::::KKK\n" +
+                "Z::::::ZZZZZZZZ:::ZO:::::::OOO:::::::ORR:::::R     R:::::RK:::::::K   K::::::K\n" +
+                "Z:::::::::::::::::Z OO:::::::::::::OO R::::::R     R:::::RK:::::::K    K:::::K\n" +
+                "Z:::::::::::::::::Z   OO:::::::::OO   R::::::R     R:::::RK:::::::K    K:::::K\n" +
+                "ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO     RRRRRRRR     RRRRRRRKKKKKKKKK    KKKKKKK\n" +
+                "                                                                              \n");
+
+        System.out.println("Hallo Neuling\n");
+        sleep(1000);
+        System.out.println("Wie du bald erfahren wirst, bist du in unserem Labyrint gefangen\n" +
+                "Jedoch geben wird dir die Chance zu entflien. Dafür musst du blos einige\n" +
+                "Items in den exit Room bringen.");
+        sleep(1000);
+        System.out.println("\n" +
+                "");
+    }
+
+    private void sleep(long duration) {
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
