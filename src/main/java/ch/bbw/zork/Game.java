@@ -19,7 +19,7 @@ public class Game {
         winningItems = new HashSet<>();
         items = new HashMap<>();
         initialise();
-        Commands commands = new Commands(player);
+        Commands commands = new Commands(player, rooms);
     }
 
     private String choosePlayerName() {
