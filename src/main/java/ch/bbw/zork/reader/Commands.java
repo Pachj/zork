@@ -1,5 +1,7 @@
 package ch.bbw.zork.reader;
 
+import ch.bbw.zork.Player;
+
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -7,8 +9,10 @@ public class Commands {
     private final Parser parser;
     private String[] words;
     private final LinkedList<String> commandsList = new LinkedList<>();
+    private final Player player;
 
-    public Commands() {
+    public Commands(Player player) {
+        this.player = player;
         parser = new Parser();
         fillCommandsList();
     }
@@ -22,22 +26,12 @@ public class Commands {
         commandsList.add("map");
     }
 
-    public void parse() {
-        try {
-            words = parser.readWords();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Ein Fehler ist aufgetreten!");
-        }
-        checkCommands();
-    }
-
     public void checkCommands() {
         if (commandsList.contains(words[0])) {
             executeCommand();
         } else {
             System.out.println("Dieser Befehl existiert nicht! Probier es noch einmal.");
-            parse();
+            //TODO Error Handling
         }
     }
 
@@ -65,7 +59,7 @@ public class Commands {
     }
 
     private void commandGo() {
-        System.out.println("Go");
+
     }
 
     private void commandShow() {

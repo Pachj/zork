@@ -14,4 +14,8 @@ public class Parser {
     public String[] readWords() throws IOException {
         return reader.readLine().toLowerCase().trim().replaceAll(" +", " ").split(" ");
     }
+
+    public String readLine() throws IOException {
+        return reader.readLine();
+    }
 }

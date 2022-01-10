@@ -1,18 +1,40 @@
 package ch.bbw.zork;
 
+import ch.bbw.zork.reader.Commands;
+import ch.bbw.zork.reader.Parser;
+
+import java.io.IOException;
 import java.util.*;
 
 public class Game {
     private final Map<RoomName, Room> rooms;
     private final Set<Item> winningItems;
     private final Map<ItemName, Item> items;
+    private final Player player;
     public static final int NEEDED_ITEMS = 5;
 
     public Game() {
+        player = new Player(choosePlayerName());
         rooms = new HashMap<>();
         winningItems = new HashSet<>();
         items = new HashMap<>();
         initialise();
+        Commands commands = new Commands(player);
+    }
+
+    private String choosePlayerName() {
+        Parser parser = new Parser();
+        String name = "";
+        System.out.println("Gib deinen Namen ein: ");
+        try {
+            name = parser.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Ein Fehler ist aufgetreten! Versuche es noch einmal.");
+            choosePlayerName();
+        }
+        //TODO Handle empty name
+        return name;
     }
 
     private void initialise() {
