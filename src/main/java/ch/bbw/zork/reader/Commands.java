@@ -65,26 +65,26 @@ public class Commands {
     }
 
     private void commandGo() {
-
+        System.out.println("Go");
     }
 
     private void commandShow() {
-
+        System.out.println("Show");
     }
 
     private void commandDrop() {
-
+        System.out.println("Drop");
     }
 
     private void commandGrap() {
-
+        System.out.println("Grap");
     }
 
     private void commandBack() {
-
+        System.out.println("Back");
     }
 
     private void commandMap() {
-
+        System.out.println("Map");
     }
 }
