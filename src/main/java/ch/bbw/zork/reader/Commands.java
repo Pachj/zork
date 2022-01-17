@@ -57,7 +57,7 @@ public class Commands {
                 commandDrop();
                 break;
             case "grap":
-                commandGrap();
+                commandGrab();
                 break;
             case "back":
                 commandBack();
@@ -165,8 +165,8 @@ public class Commands {
         System.out.println("Drop");
     }
 
-    private void commandGrap() {
-        System.out.println("Grap");
+    private void commandGrab() {
+        System.out.println("Grab");
     }
 
     private void commandBack() {
@@ -187,7 +187,7 @@ public class Commands {
         Printer.map();
         Printer.back();
         Printer.go();
-        Printer.drop_grep();
+        Printer.drop_grab();
     }
 
     private void commandMap() {
