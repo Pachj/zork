@@ -65,16 +65,16 @@ public class Commands {
     }
 
     private void commandGo() {
-        if (words.length == 2) {
-            RoomName currentRoomName = player.getCurrentRoom();
-            Room currentRoom = rooms.get(currentRoomName.name);
-            Map<String, Room> nearbyRooms = currentRoom.getDoors();
-            String roomInput = words[1];
-            if (nearbyRooms.containsKey(roomInput)) {
-                player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput).getName()));
-                System.out.println(player.getCurrentRoom());
+        if (words.length >= 2) {
+            Map<String, Room> nearbyRooms = rooms.get(player.getCurrentRoom().name).getDoors();
+            StringBuilder roomInput = new StringBuilder(words[1]);
+            for (int i = 2; i < words.length; i++) {
+                roomInput.append(" ").append(words[i]);
+            }
+            if (nearbyRooms.containsKey(roomInput.toString())) {
+                player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput.toString()).getName()));
             } else {
-                System.out.println("Dieser Raum existiert nicht!");
+                System.out.println("Dieser Raum existiert nicht oder grenzt nicht an diesen Raum an!");
             }
         } else {
             System.out.println("Bitte gebe einen Raum an!");
