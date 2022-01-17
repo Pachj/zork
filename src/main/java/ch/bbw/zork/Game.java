@@ -173,7 +173,7 @@ public class Game {
         System.out.println("\n" +
                 "Um dich in dem Labyrinth fortzubewegen, kannst du den Befehl go verwenden. \n" +
                 "Ebenfalls musst du noch eine Richtung angeben. \n" +
-                "$ go east\n" +
+                "$ go ROOM_NAME\n" +
                 "\n");
         sleep(5000);
         System.out.println(
