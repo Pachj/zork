@@ -97,7 +97,7 @@ public class Commands {
     private void commandBack() {
         if (player.getLastRoom() != null) {
             player.setCurrentRoom(player.getLastRoom());
-            System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom());
+            System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom().name);
         }
         else {
             System.out.println("Du befindest dich im Startraum und kannst deshalb nicht zurück.");
