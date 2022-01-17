@@ -72,6 +72,7 @@ public class Commands {
                 roomInput.append(" ").append(words[i]);
             }
             if (nearbyRooms.containsKey(roomInput.toString())) {
+                player.setLastRoom(player.getCurrentRoom());
                 player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput.toString()).getName()));
             } else {
                 System.out.println("Dieser Raum existiert nicht oder grenzt nicht an diesen Raum an!");
@@ -94,7 +95,13 @@ public class Commands {
     }
 
     private void commandBack() {
-        System.out.println("Back");
+        if (player.getLastRoom() != null) {
+            player.setCurrentRoom(player.getLastRoom());
+            System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom());
+        }
+        else {
+            System.out.println("Du befindest dich im Startraum und kannst deshalb nicht zurück.");
+        }
     }
 
     private void commandMap() {
