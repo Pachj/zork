@@ -157,12 +157,55 @@ public class Game {
 
         System.out.println("Hallo Neuling\n");
         sleep(1000);
-        System.out.println("Wie du bald erfahren wirst, bist du in unserem Labyrint gefangen\n" +
-                "Jedoch geben wird dir die Chance zu entflien. Dafür musst du blos einige\n" +
-                "Items in den exit Room bringen.");
+        System.out.println("Wie du bald erfahren wirst, bist du in unserem Labyrinth gefangen. Jedoch geben \n" +
+                "wir dir die Chance zu fliehen. Dafür musst du nur einige Items in den Exit Room bringen.");
+        sleep(6000);
+
+        System.out.println("\nDiese Items benötigst du:\n");
         sleep(1000);
+        winningItems.forEach(it -> {
+            System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }");
+            sleep(1000);
+        });
+
+
+
         System.out.println("\n" +
-                "");
+                "Um dich in dem Labyrinth fortzubewegen, kannst du den Befehl go verwenden. \n" +
+                "Ebenfalls musst du noch eine Richtung angeben. \n" +
+                "$ go east\n" +
+                "\n");
+        sleep(5000);
+        System.out.println(
+                "Um dich zurechtzufinden, kannst du den Befehl show verwenden. Bei diesem kannst du noch ein Attribut angeben, welches bestimmt, was angezeigt wird.\n" +
+                "$ show exits \t\t\t Zeigt dir alle Ausgänge vom aktuellen Raum an.\n" +
+                "$ show items \t\t\t Listet alle Items auf, welche sich im aktuellen Raum befinden.\n" +
+                "$ show items --global \t Liste aller Items.\n" +
+                "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack Befinden.\n" +
+                "\n");
+        sleep(8000);
+        System.out.println(
+                "Damit du Items in deinem Rucksack verstauen und wieder auf den Boden legen kannst, gibt es die Befehle drop und grap.\n" +
+                "$ drop ITEM_NAME \t\t legt das Item mit dem Namen ITEM_NAME auf den Boden.\n" +
+                "$ drop --all \t\t\t Legt alle Items, welche sich in dem Rucksack befinden auf den Boden.\n" +
+                "$ grep ITEM_NAME \t\t Nimmt das Item ITEM_NAME in deinen Rucksack auf.\n" +
+                "Was du beachten solltest, ist, dass jedes Item ein Gewicht hat und du nur 20 Kilo tragen kannst. Hättest du nur mehr Sport gemacht.\n" +
+                "\n");
+        sleep(8000);
+        System.out.println(
+                "Mit dem Befehl back kannst du in den Raum gelangen, in welchem du zuvor warst.\n" +
+                "$ back\n" +
+                "\n");
+        sleep(5000);
+        System.out.println(
+                "Mit dem Befehl map bekommt man eine Übersicht, über alle Räume und die Items, welche sich in denen befinden.\n" +
+                "$ map\n" +
+                "\n");
+        sleep(5000);
+        System.out.println(
+                "Falls du jemals Hilfe brauchen solltest, kannst du mit dem Befehl help alle Befehle anschauen.\n" +
+                "$ help\n" +
+                "\n");
     }
 
     private void sleep(long duration) {
