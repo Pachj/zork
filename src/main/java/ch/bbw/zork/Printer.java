@@ -1,6 +1,7 @@
 package ch.bbw.zork;
 
 import java.util.List;
+import java.util.Map;
 
 public class Printer {
     public static void loading() {
@@ -52,6 +53,15 @@ public class Printer {
     public static void printItems(List<Item> items) {
         items.forEach(it -> {
             System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }");
+            sleep(1000);
+        });
+    }
+
+    public static void printRoomsWithItems(Map<String, Room> rooms) {
+        rooms.forEach((key, value) -> {
+            System.out.println("Raum: " + value.getName());
+            value.getItems().forEach(it ->
+                    System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }"));
             sleep(1000);
         });
     }
