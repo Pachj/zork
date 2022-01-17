@@ -25,16 +25,6 @@ public class Game {
         parser = new Parser();
     }
 
-    public void start() {
-        while (true) {
-            try {
-                commands.checkCommands(parser.readWords());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private String choosePlayerName() {
         Parser parser = new Parser();
         String name = "";
@@ -239,7 +229,7 @@ public class Game {
                 "ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO     RRRRRRRR     RRRRRRRKKKKKKKKK    KKKKKKK\n" +
                 "                                                                              \n");
 
-        System.out.println("Hallo Neuling\n");
+        System.out.println("Hallo " + player.getName() + "\n");
         sleep(1000);
         System.out.println("Wie du bald erfahren wirst, bist du in unserem Labyrinth gefangen. Jedoch geben \n" +
                 "wir dir die Chance zu fliehen. Dafür musst du nur einige Items in den Exit Room bringen.");
@@ -290,6 +280,14 @@ public class Game {
                 "Falls du jemals Hilfe brauchen solltest, kannst du mit dem Befehl help alle Befehle anschauen.\n" +
                 "$ help\n" +
                 "\n");
+        System.out.println("Gebe deinen ersten Befehl ein:");
+        while (true) {
+            try {
+                commands.checkCommands(parser.readWords());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void sleep(long duration) {
