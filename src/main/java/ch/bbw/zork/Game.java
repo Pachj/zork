@@ -233,11 +233,11 @@ public class Game {
     }
 
     private void sleep(long duration) {
-        /*try {
+        try {
             Thread.sleep(duration);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 }
