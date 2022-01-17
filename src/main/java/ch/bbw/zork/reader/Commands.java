@@ -4,21 +4,18 @@ import ch.bbw.zork.Player;
 import ch.bbw.zork.Room;
 import ch.bbw.zork.RoomName;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Map;
 
 public class Commands {
-    private final Parser parser;
     private String[] words;
     private final LinkedList<String> commandsList = new LinkedList<>();
     private final Player player;
     private final Map<String, Room> rooms;
 
-    public Commands(Player player,  Map<String, Room> rooms) {
+    public Commands(Player player, Map<String, Room> rooms) {
         this.rooms = rooms;
         this.player = player;
-        parser = new Parser();
         fillCommandsList();
     }
 
@@ -66,13 +63,14 @@ public class Commands {
 
     private void commandGo() {
         if (words.length >= 2) {
-            Map<String, Room> nearbyRooms = rooms.get(player.getCurrentRoom().name).getDoors();
+            Map<String, Room> nearbyRooms = getNearbyRooms();
             StringBuilder roomInput = new StringBuilder(words[1]);
             for (int i = 2; i < words.length; i++) {
                 roomInput.append(" ").append(words[i]);
             }
             if (nearbyRooms.containsKey(roomInput.toString())) {
                 player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput.toString()).getName()));
+                System.out.println("Du bist jetzt im Raum " + player.getCurrentRoom().name);
             } else {
                 System.out.println("Dieser Raum existiert nicht oder grenzt nicht an diesen Raum an!");
             }
@@ -82,7 +80,43 @@ public class Commands {
     }
 
     private void commandShow() {
-        System.out.println("Show");
+        if (words.length >= 2) {
+            switch (words[1]) {
+                case "exits":
+                    commandShowExits();
+                    break;
+                case "items":
+                    commandShowItems();
+                    break;
+                case "backpack":
+                    commandShowBackpack();
+                    break;
+                case "room":
+                    commandShowRoom();
+                    break;
+            }
+        } else {
+            System.out.println("Bitte gebe einen Parameter an!");
+        }
+    }
+
+    private void commandShowExits() {
+        Map<String, Room> nearbyRooms = getNearbyRooms();
+        for (Map.Entry<String, Room> entry : nearbyRooms.entrySet()) {
+            System.out.println(entry.getValue().getName());
+        }
+    }
+
+    private void commandShowItems() {
+
+    }
+
+    private void commandShowBackpack() {
+
+    }
+
+    private void commandShowRoom() {
+        System.out.println(player.getCurrentRoom().name);
     }
 
     private void commandDrop() {
@@ -99,5 +133,9 @@ public class Commands {
 
     private void commandMap() {
         System.out.println("Map");
+    }
+
+    private Map<String, Room> getNearbyRooms() {
+        return rooms.get(player.getCurrentRoom().name).getDoors();
     }
 }
