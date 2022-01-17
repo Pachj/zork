@@ -54,6 +54,7 @@ public class Game {
     private void initialise() {
         initialiseItems();
         initialiseRooms();
+        initialiseDoors();
         initialiseWinningItems();
     }
 
@@ -114,6 +115,51 @@ public class Game {
         rooms.put(RoomName.KITCHEN.name, new Room(RoomName.KITCHEN.name, roomItems));
 
         rooms.put(RoomName.EXIT_ROOM.name, new Room(RoomName.EXIT_ROOM.name, new LinkedList<>()));
+    }
+
+    private void initialiseDoors() {
+        Map<String, Room> doors = new HashMap<>();
+        doors.put(RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name));
+        rooms.get(RoomName.TAVERNE.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.LAB.name, rooms.get(RoomName.LAB.name));
+        doors.put(RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name));
+        doors.put(RoomName.TAVERNE.name, rooms.get(RoomName.TAVERNE.name));
+        rooms.get(RoomName.OUTSIDE.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name));
+        rooms.get(RoomName.LAB.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name));
+        doors.put(RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name));
+        doors.put(RoomName.BALCONY.name, rooms.get(RoomName.BALCONY.name));
+        doors.put(RoomName.EXIT_ROOM.name, rooms.get(RoomName.EXIT_ROOM.name));
+        rooms.get(RoomName.LIVING_ROOM.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.KITCHEN.name, rooms.get(RoomName.KITCHEN.name));
+        doors.put(RoomName.WC.name, rooms.get(RoomName.WC.name));
+        doors.put(RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name));
+        rooms.get(RoomName.OFFICE.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name));
+        rooms.get(RoomName.KITCHEN.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name));
+        rooms.get(RoomName.WC.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name));
+        rooms.get(RoomName.BALCONY.name).setDoors(doors);
+
+        doors = new HashMap<>();
+        doors.put(RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name));
+        rooms.get(RoomName.EXIT_ROOM.name).setDoors(doors);
     }
 
     private void initialiseItems() {
