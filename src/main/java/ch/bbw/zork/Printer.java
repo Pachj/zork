@@ -79,7 +79,7 @@ public class Printer {
             "$ show exits \t\t\t Zeigt dir alle Ausgänge vom aktuellen Raum an.\n"+
             "$ show items \t\t\t Listet alle Items auf, welche sich im aktuellen Raum befinden.\n"+
             "$ show items --global \t Liste aller Items.\n"+
-            "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack Befinden.\n\n");
+            "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack befinden.\n\n");
     }
 
     public static void drop_grep() {
@@ -88,7 +88,7 @@ public class Printer {
             "$ drop ITEM_NAME \t\t legt das Item mit dem Namen ITEM_NAME auf den Boden.\n"+
             "$ drop --all \t\t\t Legt alle Items, welche sich in dem Rucksack befinden auf den Boden.\n"+
             "$ grep ITEM_NAME \t\t Nimmt das Item ITEM_NAME in deinen Rucksack auf.\n"+
-            "Was du beachten solltest, ist, dass jedes Item ein Gewicht hat und du nur 20 Kilo tragen kannst. Hättest du nur mehr Sport gemacht.\n\n");
+            "Was du beachten solltest, ist, dass jedes Item ein Gewicht hat und du nur 20 Kilogramm tragen kannst. Hättest du nur mehr Sport gemacht.\n\n");
 }
 
     public static void back() {
