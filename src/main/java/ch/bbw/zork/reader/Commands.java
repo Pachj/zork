@@ -71,6 +71,7 @@ public class Commands {
                 roomInput.append(" ").append(words[i]);
             }
             if (nearbyRooms.containsKey(roomInput.toString())) {
+                player.setLastRoom(player.getCurrentRoom());
                 player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput.toString()).getName()));
                 System.out.println("Du bist jetzt im Raum " + player.getCurrentRoom().name);
             } else {
@@ -161,7 +162,16 @@ public class Commands {
     }
 
     private void commandBack() {
-        System.out.println("Back");
+        if (player.getLastRoom() != null) {
+            RoomName tmpRoom = player.getCurrentRoom();
+
+            player.setCurrentRoom(player.getLastRoom());
+            player.setLastRoom(tmpRoom);
+            System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom().name);
+        }
+        else {
+            System.out.println("Du befindest dich im Startraum und kannst deshalb nicht zurück.");
+        }
     }
 
     private void commandMap() {
