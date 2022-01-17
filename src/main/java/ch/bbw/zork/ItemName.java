@@ -1,70 +1,70 @@
 package ch.bbw.zork;
 
 public enum ItemName {
-        GRILL("Grill"),
+        GRILL("grill"),
 
-        PALME("Palme"),
+        PALME("palme"),
 
-        FERNSEHER ("Fernseher"),
+        FERNSEHER ("fernseher"),
 
-        SCHROTFLINTE("Schrotflinte"),
+        SCHROTFLINTE("schrotflinte"),
 
-        ERDE("Erde"),
+        ERDE("erde"),
 
-        HOCKER("Hocker"),
+        HOCKER("hocker"),
 
-        SCHAUFEL("Schaufel"),
+        SCHAUFEL("schaufel"),
 
-        WLAN_ROUTER("Wlan-Router"),
+        WLAN_ROUTER("wlan-router"),
 
-        BIERKRUG("Bierkrug"),
+        BIERKRUG("bierkrug"),
 
-        PUTZMITTEL("Putzmittel"),
+        PUTZMITTEL("putzmittel"),
 
-        MONOPOLY("Monopoly"),
+        MONOPOLY("monopoly"),
 
-        BUCH("Buch"),
+        BUCH("buch"),
 
-        HANDY("Handy"),
+        HANDY("handy"),
 
-        FLEISCH("Fleisch"),
+        FLEISCH("fleisch"),
 
-        SANDWICH("Sandwich"),
+        SANDWICH("sandwich"),
 
-        APFEL("Apfel"),
+        APFEL("apfel"),
 
-        STROMKABEL("Stromkabel"),
+        STROMKABEL("stromkabel"),
 
-        ZAUBERTRANK("Zaubertrank"),
+        ZAUBERTRANK("zaubertrank"),
 
-        WC_PAPIER("WC-Papier"),
+        WC_PAPIER("wc-papier"),
 
-        REAGENZGLAS("Reagenzglas"),
+        REAGENZGLAS("reagenzglas"),
 
-        SCHLUESSEL("Schlüssel"),
+        SCHLUESSEL("schlüssel"),
 
-        SKALPELL("Skalpell"),
+        SKALPELL("skalpell"),
 
-        ROSE("Rose"),
+        ROSE("rose"),
 
-        PENNY("Penny"),
+        PENNY("penny"),
 
-        KAKERLAKE("Kakerlake"),
+        KAKERLAKE("kakerlake"),
 
-        RAUPE("Raupe"),
+        RAUPE("raupe"),
 
-        SCHMETTERLING("Schmetterling"),
+        SCHMETTERLING("schmetterling"),
 
-        KRUEMEL("Krümel"),
+        KRUEMEL("krümel"),
 
-        MESSER("Messer"),
+        MESSER("messer"),
 
-        WASSERFLASCHE("Wasserflasche"),
+        WASSERFLASCHE("wasserflasche"),
 
-        LAUCH("Lauch");
+        LAUCH("lauch");
 
 
-    private String name;
+    public final String name;
 
     ItemName(String name) {
         this.name = name;
