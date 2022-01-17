@@ -1,6 +1,7 @@
 package ch.bbw.zork.reader;
 
 import ch.bbw.zork.Player;
+import ch.bbw.zork.Printer;
 import ch.bbw.zork.Room;
 import ch.bbw.zork.RoomName;
 
@@ -29,6 +30,7 @@ public class Commands {
         commandsList.add("grap");
         commandsList.add("back");
         commandsList.add("map");
+        commandsList.add("help");
     }
 
     public void checkCommands(String[] words) {
@@ -57,6 +59,9 @@ public class Commands {
                 break;
             case "back":
                 commandBack();
+                break;
+            case "help":
+                commandHelp();
                 break;
             case "map":
                 commandMap();
@@ -95,6 +100,14 @@ public class Commands {
 
     private void commandBack() {
         System.out.println("Back");
+    }
+
+    private void commandHelp() {
+        Printer.show();
+        Printer.map();
+        Printer.back();
+        Printer.go();
+        Printer.drop_grep();
     }
 
     private void commandMap() {
