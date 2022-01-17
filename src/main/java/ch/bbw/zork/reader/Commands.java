@@ -96,7 +96,10 @@ public class Commands {
 
     private void commandBack() {
         if (player.getLastRoom() != null) {
+            RoomName tmpRoom = player.getCurrentRoom();
+
             player.setCurrentRoom(player.getLastRoom());
+            player.setLastRoom(tmpRoom);
             System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom().name);
         }
         else {
