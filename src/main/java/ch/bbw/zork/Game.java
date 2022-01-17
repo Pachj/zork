@@ -21,7 +21,7 @@ public class Game {
         winningItems = new HashSet<>();
         items = new HashMap<>();
         initialise();
-        commands = new Commands(player, rooms);
+        commands = new Commands(player, rooms, winningItems);
         parser = new Parser();
     }
 
@@ -291,11 +291,11 @@ public class Game {
     }
 
     private void sleep(long duration) {
-        /*try {
+        try {
             Thread.sleep(duration);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 }

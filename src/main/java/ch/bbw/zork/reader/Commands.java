@@ -5,16 +5,19 @@ import ch.bbw.zork.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Commands {
     private String[] words;
     private final LinkedList<String> commandsList = new LinkedList<>();
+    private final Set<Item> winningItems;
     private final Player player;
     private final Map<String, Room> rooms;
 
-    public Commands(Player player, Map<String, Room> rooms) {
+    public Commands(Player player, Map<String, Room> rooms, Set<Item> winningItems) {
         this.rooms = rooms;
         this.player = player;
+        this.winningItems = winningItems;
         fillCommandsList();
     }
 
@@ -133,7 +136,9 @@ public class Commands {
     }
 
     private void commandShowWinningItems() {
-
+        for (Item item : winningItems) {
+            System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
+        }
     }
 
     private void commandShowBackpack() {
