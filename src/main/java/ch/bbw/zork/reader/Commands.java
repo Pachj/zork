@@ -13,9 +13,9 @@ public class Commands {
     private String[] words;
     private final LinkedList<String> commandsList = new LinkedList<>();
     private final Player player;
-    private final Map<RoomName, Room> rooms;
+    private final Map<String, Room> rooms;
 
-    public Commands(Player player,  Map<RoomName, Room> rooms) {
+    public Commands(Player player,  Map<String, Room> rooms) {
         this.rooms = rooms;
         this.player = player;
         parser = new Parser();
@@ -31,7 +31,8 @@ public class Commands {
         commandsList.add("map");
     }
 
-    public void checkCommands() {
+    public void checkCommands(String[] words) {
+        this.words = words;
         if (commandsList.contains(words[0])) {
             executeCommand();
         } else {
@@ -66,11 +67,14 @@ public class Commands {
     private void commandGo() {
         if (words.length == 2) {
             RoomName currentRoomName = player.getCurrentRoom();
-            Room currentRoom = rooms.get(currentRoomName);
-            Map<RoomName, Room> nearbyRooms = currentRoom.getDoors();
+            Room currentRoom = rooms.get(currentRoomName.name);
+            Map<String, Room> nearbyRooms = currentRoom.getDoors();
             String roomInput = words[1];
-            if (nearbyRooms.containsKey(RoomName.fromString(roomInput))) {
-                player.setCurrentRoom(nearbyRooms.get(RoomName.fromString(roomInput)));
+            if (nearbyRooms.containsKey(roomInput)) {
+                player.setCurrentRoom(RoomName.fromString(nearbyRooms.get(roomInput).getName()));
+                System.out.println(player.getCurrentRoom());
+            } else {
+                System.out.println("Dieser Raum existiert nicht!");
             }
         } else {
             System.out.println("Bitte gebe einen Raum an!");

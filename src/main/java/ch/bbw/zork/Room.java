@@ -6,7 +6,7 @@ import java.util.Map;
 public class Room {
     private final String name;
     private final List<Item> items;
-    private Map<RoomName, Room> doors;
+    private Map<String, Room> doors;
 
     public Room(String name, List<Item> items) {
         this.name = name;
@@ -21,11 +21,11 @@ public class Room {
         return items;
     }
 
-    public Map<RoomName, Room> getDoors() {
+    public Map<String, Room> getDoors() {
         return doors;
     }
 
-    public void setDoors(Map<RoomName, Room> doors) {
+    public void setDoors(Map<String, Room> doors) {
         this.doors = doors;
     }
 }

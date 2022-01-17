@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum RoomName {
-    TAVERNE("Taverne"),
-    OUTSIDE("Outside"),
-    LAB("Lab"),
-    EXIT_ROOM("Exit room"),
-    LIVING_ROOM("Living room"),
-    OFFICE("Office"),
-    KITCHEN("Kitchen"),
-    BALCONY("Balcony"),
-    WC("Wc");
+    TAVERNE("taverne"),
+    OUTSIDE("outside"),
+    LAB("lab"),
+    EXIT_ROOM("exit room"),
+    LIVING_ROOM("living room"),
+    OFFICE("office"),
+    KITCHEN("kitchen"),
+    BALCONY("balcony"),
+    WC("wc");
 
-    private String name;
+    public final String name;
 
     RoomName(String name) {
         this.name = name;
