@@ -1,10 +1,9 @@
 package ch.bbw.zork.reader;
 
-import ch.bbw.zork.Player;
-import ch.bbw.zork.Room;
-import ch.bbw.zork.RoomName;
+import ch.bbw.zork.*;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class Commands {
@@ -108,11 +107,40 @@ public class Commands {
     }
 
     private void commandShowItems() {
+        if (words.length >= 3) {
+            switch (words[2]) {
+                case "--global":
+                    commandShowGlobalItems();
+                    break;
+                case "--winning":
+                    commandShowWinningItems();
+                    break;
+            }
+        } else {
+            List<Item> items = rooms.get(player.getCurrentRoom().name).getItems();
+            for (Item item : items) {
+                System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
+            }
+        }
+    }
+
+    private void commandShowGlobalItems() {
+        for (Map.Entry<String, Room> entry : rooms.entrySet()) {
+            for (Item item : entry.getValue().getItems()) {
+                System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
+            }
+        }
+    }
+
+    private void commandShowWinningItems() {
 
     }
 
     private void commandShowBackpack() {
-
+        for (Item item : player.getBackpack().getItems()) {
+            System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
+        }
+        System.out.println("Verbleibendes Gewicht: " + (Backpack.MAX_WEIGHT_G - player.getBackpack().getCurrentWeight()));
     }
 
     private void commandShowRoom() {

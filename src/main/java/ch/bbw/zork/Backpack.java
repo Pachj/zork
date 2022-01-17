@@ -40,4 +40,12 @@ public class Backpack {
         items.clear();
         currentWeight = 0;
     }
+
+    public int getCurrentWeight() {
+        return currentWeight;
+    }
+
+    public void setCurrentWeight(int currentWeight) {
+        this.currentWeight = currentWeight;
+    }
 }
