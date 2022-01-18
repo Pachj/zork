@@ -166,10 +166,15 @@ public class Commands {
             backpack.clear();
             System.out.println("Alle Items wurden aus dem Rucksack entfernt");
         } else {
-            Item item = backpack.getItems().stream().filter(it -> it.getName().equals(parameter)).collect(Collectors.toList()).get(0);
-            room.addItem(item);
-            backpack.removeItem(item.getName());
-            System.out.println("Das Item " + item.getName() + " wurde fallengelassen");
+            List<Item> items = backpack.getItems().stream().filter(it -> it.getName().equals(parameter)).collect(Collectors.toList());
+            if (items.size() < 1) {
+                System.out.println("Das Item " + parameter + " hast du nicht in deinem Rucksack");
+            } else {
+                Item item = items.get(0);
+                room.addItem(item);
+                backpack.removeItem(item.getName());
+                System.out.println("Das Item " + item.getName() + " wurde fallengelassen");
+            }
         }
         checkGameWon();
     }
@@ -198,7 +203,7 @@ public class Commands {
         List<Item> items = room.getItems().stream()
                 .filter(it -> it.getName().equals(itemName)).collect(Collectors.toList());
         if (items.size() < 1) {
-            System.out.println("Das Item" + itemName + " existiert nicht in diesem Raum");
+            System.out.println("Das Item " + itemName + " existiert nicht in diesem Raum");
         } else {
             game.getPlayer().getBackpack().addItem(items.get(0));
             room.removeItem(itemName);
