@@ -22,8 +22,24 @@ public class Game {
         winningItems = new HashSet<>();
         items = new HashMap<>();
         initialise();
-        commands = new Commands(player, rooms, winningItems);
+        commands = new Commands(player, rooms, this);
         parser = new Parser();
+    }
+
+    public Map<String, Room> getRooms() {
+        return rooms;
+    }
+
+    public Set<Item> getWinningItems() {
+        return winningItems;
+    }
+
+    public Map<ItemName, Item> getItems() {
+        return items;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     private String choosePlayerName() {
