@@ -109,6 +109,57 @@ public class Printer {
             "$ help\n\n");
     }
 
+    public static void won() {
+        System.out.println(
+                "                                                                                                                                                       \n" +
+                        "                                                                                                                                                       \n" +
+                        "        CCCCCCCCCCCCC                                                                                                   tttt                           \n" +
+                        "     CCC::::::::::::C                                                                                                ttt:::t                           \n" +
+                        "   CC:::::::::::::::C                                                                                                t:::::t                           \n" +
+                        "  C:::::CCCCCCCC::::C                                                                                                t:::::t                           \n" +
+                        " C:::::C       CCCCCC   ooooooooooo   nnnn  nnnnnnnn       ggggggggg   gggggrrrrr   rrrrrrrrr   aaaaaaaaaaaaa  ttttttt:::::ttttttt        ssssssssss   \n" +
+                        "C:::::C               oo:::::::::::oo n:::nn::::::::nn    g:::::::::ggg::::gr::::rrr:::::::::r  a::::::::::::a t:::::::::::::::::t      ss::::::::::s  \n" +
+                        "C:::::C              o:::::::::::::::on::::::::::::::nn  g:::::::::::::::::gr:::::::::::::::::r aaaaaaaaa:::::at:::::::::::::::::t    ss:::::::::::::s \n" +
+                        "C:::::C              o:::::ooooo:::::onn:::::::::::::::ng::::::ggggg::::::ggrr::::::rrrrr::::::r         a::::atttttt:::::::tttttt    s::::::ssss:::::s\n" +
+                        "C:::::C              o::::o     o::::o  n:::::nnnn:::::ng:::::g     g:::::g  r:::::r     r:::::r  aaaaaaa:::::a      t:::::t           s:::::s  ssssss \n" +
+                        "C:::::C              o::::o     o::::o  n::::n    n::::ng:::::g     g:::::g  r:::::r     rrrrrrraa::::::::::::a      t:::::t             s::::::s      \n" +
+                        "C:::::C              o::::o     o::::o  n::::n    n::::ng:::::g     g:::::g  r:::::r           a::::aaaa::::::a      t:::::t                s::::::s   \n" +
+                        " C:::::C       CCCCCCo::::o     o::::o  n::::n    n::::ng::::::g    g:::::g  r:::::r          a::::a    a:::::a      t:::::t    ttttttssssss   s:::::s \n" +
+                        "  C:::::CCCCCCCC::::Co:::::ooooo:::::o  n::::n    n::::ng:::::::ggggg:::::g  r:::::r          a::::a    a:::::a      t::::::tttt:::::ts:::::ssss::::::s\n" +
+                        "   CC:::::::::::::::Co:::::::::::::::o  n::::n    n::::n g::::::::::::::::g  r:::::r          a:::::aaaa::::::a      tt::::::::::::::ts::::::::::::::s \n" +
+                        "     CCC::::::::::::C oo:::::::::::oo   n::::n    n::::n  gg::::::::::::::g  r:::::r           a::::::::::aa:::a       tt:::::::::::tt s:::::::::::ss  \n" +
+                        "        CCCCCCCCCCCCC   ooooooooooo     nnnnnn    nnnnnn    gggggggg::::::g  rrrrrrr            aaaaaaaaaa  aaaa         ttttttttttt    sssssssssss    \n" +
+                        "                                                                    g:::::g                                                                            \n" +
+                        "                                                        gggggg      g:::::g                                                                            \n" +
+                        "                                                        g:::::gg   gg:::::g                                                                            \n" +
+                        "                                                         g::::::ggg:::::::g                                                                            \n" +
+                        "                                                          gg:::::::::::::g                                                                             \n" +
+                        "                                                            ggg::::::ggg                                                                               \n" +
+                        "                                                               gggggg                                                                                  \n" +
+                        "                                                                                                                                                       \n" +
+                        "                                                                                                                                                       \n" +
+                        "                                                                                                                                                       \n" +
+                        "yyyyyyy           yyyyyyy ooooooooooo   uuuuuu    uuuuuu       wwwwwww           wwwww           wwwwwww ooooooooooo   nnnn  nnnnnnnn                  \n" +
+                        " y:::::y         y:::::yoo:::::::::::oo u::::u    u::::u        w:::::w         w:::::w         w:::::woo:::::::::::oo n:::nn::::::::nn                \n" +
+                        "  y:::::y       y:::::yo:::::::::::::::ou::::u    u::::u         w:::::w       w:::::::w       w:::::wo:::::::::::::::on::::::::::::::nn               \n" +
+                        "   y:::::y     y:::::y o:::::ooooo:::::ou::::u    u::::u          w:::::w     w:::::::::w     w:::::w o:::::ooooo:::::onn:::::::::::::::n              \n" +
+                        "    y:::::y   y:::::y  o::::o     o::::ou::::u    u::::u           w:::::w   w:::::w:::::w   w:::::w  o::::o     o::::o  n:::::nnnn:::::n              \n" +
+                        "     y:::::y y:::::y   o::::o     o::::ou::::u    u::::u            w:::::w w:::::w w:::::w w:::::w   o::::o     o::::o  n::::n    n::::n              \n" +
+                        "      y:::::y:::::y    o::::o     o::::ou::::u    u::::u             w:::::w:::::w   w:::::w:::::w    o::::o     o::::o  n::::n    n::::n              \n" +
+                        "       y:::::::::y     o::::o     o::::ou:::::uuuu:::::u              w:::::::::w     w:::::::::w     o::::o     o::::o  n::::n    n::::n              \n" +
+                        "        y:::::::y      o:::::ooooo:::::ou:::::::::::::::uu             w:::::::w       w:::::::w      o:::::ooooo:::::o  n::::n    n::::n              \n" +
+                        "         y:::::y       o:::::::::::::::o u:::::::::::::::u              w:::::w         w:::::w       o:::::::::::::::o  n::::n    n::::n              \n" +
+                        "        y:::::y         oo:::::::::::oo   uu::::::::uu:::u               w:::w           w:::w         oo:::::::::::oo   n::::n    n::::n              \n" +
+                        "       y:::::y            ooooooooooo       uuuuuuuu  uuuu                www             www            ooooooooooo     nnnnnn    nnnnnn              \n" +
+                        "      y:::::y                                                                                                                                          \n" +
+                        "     y:::::y                                                                                                                                           \n" +
+                        "    y:::::y                                                                                                                                            \n" +
+                        "   y:::::y                                                                                                                                             \n" +
+                        "  yyyyyyy                                                                                                                                              \n" +
+                        "                                                                                                                                                       \n" +
+                        "                                                                                                                                                       ");
+    }
+
     private static void sleep(long duration) {
         try {
             Thread.sleep(duration);

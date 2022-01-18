@@ -6,11 +6,8 @@ import ch.bbw.zork.Printer;
 import ch.bbw.zork.Room;
 import ch.bbw.zork.RoomName;
 
-import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class Commands {
@@ -173,6 +170,26 @@ public class Commands {
             room.addItem(item);
             backpack.removeItem(item.getName());
             System.out.println("Das Item " + item.getName() + " wurde fallengelassen");
+        }
+        checkGameWon();
+    }
+
+    private void checkGameWon() {
+        if (game.getPlayer().getCurrentRoom().equals(RoomName.EXIT_ROOM)) {
+            AtomicReference<Boolean> allNeededItemsDropped = new AtomicReference<>(true);
+            List<String> items = new LinkedList<>();
+            game.getRooms().get(game.getPlayer().getCurrentRoom().name).getItems().forEach(it -> items.add(it.getName()));
+            List<String> neededItems = new LinkedList<>();
+            game.getWinningItems().forEach(it -> neededItems.add(it.getName()));
+
+            neededItems.forEach(it -> {
+                if (!items.contains(it)) {
+                    allNeededItemsDropped.set(false);
+                }
+            });
+            if (allNeededItemsDropped.get()) {
+                Printer.won();
+            }
         }
     }
 
