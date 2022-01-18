@@ -1,6 +1,7 @@
 package ch.bbw.zork;
 
 import java.util.List;
+import java.util.Map;
 
 public class Printer {
     public static void loading() {
@@ -56,6 +57,15 @@ public class Printer {
         });
     }
 
+    public static void printRoomsWithItems(Map<String, Room> rooms) {
+        rooms.forEach((key, value) -> {
+            System.out.println("Raum: " + value.getName());
+            value.getItems().forEach(it ->
+                    System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }"));
+            sleep(1000);
+        });
+    }
+
     public static void go() {
         System.out.println("\n"+
             "Um dich in dem Labyrinth fortzubewegen, kannst du den Befehl go verwenden. \n"+
@@ -69,16 +79,16 @@ public class Printer {
             "$ show exits \t\t\t Zeigt dir alle Ausgänge vom aktuellen Raum an.\n"+
             "$ show items \t\t\t Listet alle Items auf, welche sich im aktuellen Raum befinden.\n"+
             "$ show items --global \t Liste aller Items.\n"+
-            "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack Befinden.\n\n");
+            "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack befinden.\n\n");
     }
 
-    public static void drop_grep() {
+    public static void drop_grab() {
         System.out.println(
             "Damit du Items in deinem Rucksack verstauen und wieder auf den Boden legen kannst, gibt es die Befehle drop und grap.\n"+
             "$ drop ITEM_NAME \t\t legt das Item mit dem Namen ITEM_NAME auf den Boden.\n"+
             "$ drop --all \t\t\t Legt alle Items, welche sich in dem Rucksack befinden auf den Boden.\n"+
-            "$ grep ITEM_NAME \t\t Nimmt das Item ITEM_NAME in deinen Rucksack auf.\n"+
-            "Was du beachten solltest, ist, dass jedes Item ein Gewicht hat und du nur 20 Kilo tragen kannst. Hättest du nur mehr Sport gemacht.\n\n");
+            "$ grab ITEM_NAME \t\t Nimmt das Item ITEM_NAME in deinen Rucksack auf.\n"+
+            "Was du beachten solltest, ist, dass jedes Item ein Gewicht hat und du nur 20 Kilogramm tragen kannst. Hättest du nur mehr Sport gemacht.\n\n");
 }
 
     public static void back() {

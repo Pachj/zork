@@ -206,11 +206,11 @@ public class Commands {
         Printer.map();
         Printer.back();
         Printer.go();
-        Printer.drop_grep();
+        Printer.drop_grab();
     }
 
     private void commandMap() {
-        System.out.println("Map");
+        Printer.printRoomsWithItems(rooms);
     }
 
     private Map<String, Room> getNearbyRooms() {

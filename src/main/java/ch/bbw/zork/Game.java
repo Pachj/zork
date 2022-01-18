@@ -5,7 +5,6 @@ import ch.bbw.zork.reader.Parser;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Game {
     private final Map<String, Room> rooms;
@@ -227,7 +226,7 @@ public class Game {
         Printer.show();
         sleep(8000);
 
-        Printer.drop_grep();
+        Printer.drop_grab();
         sleep(8000);
 
         Printer.back();
