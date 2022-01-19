@@ -2,10 +2,11 @@ package ch.bbw.zork;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Backpack {
     public static final int MAX_WEIGHT_G = 20_000;
-    private final List<Item> items;
+    private List<Item> items;
     private int currentWeight;
 
     public Backpack() {
@@ -17,23 +18,27 @@ public class Backpack {
         return items;
     }
 
-    public void addItem(Item item) {
-        if (currentWeight + item.getWeight() > Backpack.MAX_WEIGHT_G) {
-            System.out.println("Das Item " + item.getName() + " konnte nicht aufgesammelt werden, da der Rucksack das maximale Gewicht von " + Backpack.MAX_WEIGHT_G / 1_000 + " Kg überschritten hat.");
+    public boolean addItem(Item item) {
+        if (currentWeight + item.weight > Backpack.MAX_WEIGHT_G) {
+            System.out.println("Das Item " + item.name + " konnte nicht aufgesammelt werden, da der Rucksack das maximale Gewicht von " + Backpack.MAX_WEIGHT_G / 1_000 + " Kg überschritten hat.");
+            return false;
         } else {
             items.add(item);
-            currentWeight += item.getWeight();
-            System.out.println("Das Item " + item.getName() + " wurde aufgesammelt. Es können noch " + (Backpack.MAX_WEIGHT_G - currentWeight) / 1_000 + " Kg aufgenommen werden.");
+            currentWeight += item.weight;
+            System.out.println("Das Item " + item.name + " wurde aufgesammelt. Es können noch " + (Backpack.MAX_WEIGHT_G - currentWeight) / 1_000 + " Kg aufgenommen werden.");
+            return true;
         }
     }
 
     public void removeItem(String name) {
-        items.forEach(item -> {
-            if (item.getName().equals(name)) {
-                currentWeight -= item.getWeight();
-                items.remove(item);
+        items = items.stream().filter(it -> {
+            if (it.name.equals(name)) {
+                currentWeight -= it.weight;
+                return false;
+            } else {
+                return true;
             }
-        });
+        }).collect(Collectors.toList());
     }
 
     public void clear() {
@@ -41,11 +46,11 @@ public class Backpack {
         currentWeight = 0;
     }
 
-    public int getCurrentWeight() {
+    private int getCurrentWeight() {
         return currentWeight;
     }
 
-    public void setCurrentWeight(int currentWeight) {
-        this.currentWeight = currentWeight;
+    public int getRemainingCapacity() {
+        return Backpack.MAX_WEIGHT_G - getCurrentWeight();
     }
 }

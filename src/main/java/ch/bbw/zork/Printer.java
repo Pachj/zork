@@ -50,19 +50,25 @@ public class Printer {
                 "wir dir die Chance zu fliehen. Dafür musst du nur einige Items in den Exit Room bringen.");
     }
 
+    public static void printItemsDelayed(List<Item> items) {
+        items.forEach(it -> {
+            System.out.println("{ name: " + it.name + ", gewicht: " + it.weight + "g }");
+            sleep(1000);
+        });
+    }
+
     public static void printItems(List<Item> items) {
         items.forEach(it -> {
-            System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }");
-            sleep(1000);
+            System.out.println("{ name: " + it.name + ", gewicht: " + it.weight + "g }");
         });
     }
 
     public static void printRoomsWithItems(Map<String, Room> rooms) {
         rooms.forEach((key, value) -> {
-            System.out.println("Raum: " + value.getName());
+            System.out.print("{ Raum: " + value.getName() + " ");
             value.getItems().forEach(it ->
-                    System.out.println("{ name: " + it.getName() + ", gewicht: " + it.getWeight() + " }"));
-            sleep(1000);
+                    System.out.print("\n\t{ name: " + it.name + ", gewicht: " + it.weight + "g }"));
+            System.out.println("}");
         });
     }
 
@@ -79,6 +85,7 @@ public class Printer {
             "$ show exits \t\t\t Zeigt dir alle Ausgänge vom aktuellen Raum an.\n"+
             "$ show items \t\t\t Listet alle Items auf, welche sich im aktuellen Raum befinden.\n"+
             "$ show items --global \t Liste aller Items.\n"+
+            "$ show items --winning \t Liste aller Items, die sie zum gewinnen brauchen.\n"+
             "$ show backpack \t\t Listet alle Items auf, welche sich in deinem Rucksack befinden.\n\n");
     }
 
@@ -107,6 +114,10 @@ public class Printer {
         System.out.println(
             "Falls du jemals Hilfe brauchen solltest, kannst du mit dem Befehl help alle Befehle anschauen.\n"+
             "$ help\n\n");
+    }
+
+    public static void parameterDoesNotExists(String parameter) {
+        System.out.println("Der Parameter " + parameter + " existiert nicht");
     }
 
     public static void won() {

@@ -23,7 +23,7 @@ public class Room {
     }
 
     public void removeItem(String itemName) {
-        items = items.stream().filter(it -> !it.getName().equals(itemName)).collect(Collectors.toList());
+        items = items.stream().filter(it -> !it.name.equals(itemName)).collect(Collectors.toList());
     }
 
     public void addItems(List<Item> items) {
