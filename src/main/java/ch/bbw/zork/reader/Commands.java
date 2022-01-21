@@ -198,6 +198,7 @@ public class Commands {
 
     private void commandMap() {
         Printer.printRoomsWithItems(rooms);
+        Printer.printMap();
     }
 
     private Map<String, Room> getNearbyRooms() {
