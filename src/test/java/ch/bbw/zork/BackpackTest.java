@@ -57,6 +57,18 @@ public class BackpackTest {
         assertThat(backpack.getItems().size()).isEqualTo(1);
     }
 
+    @Test
+    public void shouldCheckIfWeightHasBeenAdjusted() {
+        Item itemOne = new Item(10, "Item");
+        backpack.addItem(itemOne);
+
+        assertThat(backpack.getCurrentWeight()).isEqualTo(itemOne.getWeight());
+
+        backpack.removeItem(itemOne.getName());
+
+        assertThat(backpack.getCurrentWeight()).isEqualTo(0);
+    }
+
     // Tests for method clear()
     @Test
     public void shouldClearBackpackWithMultipleItems() {
@@ -70,7 +82,6 @@ public class BackpackTest {
         backpack.clear();
 
         assertThat(backpack.getItems()).isEmpty();
-        assertThat(backpack.getCurrentWeight()).isEqualTo(0);
     }
 
     @Test
@@ -78,6 +89,18 @@ public class BackpackTest {
         backpack.clear();
 
         assertThat(backpack.getItems()).isEmpty();
+        assertThat(backpack.getCurrentWeight()).isEqualTo(0);
+    }
+
+    @Test
+    public void shouldCheckIfWeightHasBeenReset() {
+        Item itemOne = new Item(10, "Item");
+        backpack.addItem(itemOne);
+
+        assertThat(backpack.getCurrentWeight()).isEqualTo(itemOne.getWeight());
+
+        backpack.clear();
+
         assertThat(backpack.getCurrentWeight()).isEqualTo(0);
     }
 }
