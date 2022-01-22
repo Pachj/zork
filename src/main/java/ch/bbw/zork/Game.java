@@ -42,6 +42,11 @@ public class Game {
         System.out.println("Gib deinen Namen ein: ");
         try {
             name = parser.readLine();
+            if (name.isBlank()) {
+                choosePlayerName();
+            } else {
+                System.out.println("Dein Name: " + name);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ein Fehler ist aufgetreten! Versuche es noch einmal.");
@@ -168,6 +173,7 @@ public class Game {
         while (winningItems.size() < NEEDED_ITEMS) {
             int random = (int) Math.round(Math.random() * (items.size() - 1));
             winningItems.add(items.get(random));
+            items.remove(random);
         }
     }
 
