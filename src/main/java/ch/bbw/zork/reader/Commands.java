@@ -1,49 +1,24 @@
 package ch.bbw.zork.reader;
 
 import ch.bbw.zork.*;
-import ch.bbw.zork.Player;
-import ch.bbw.zork.Printer;
-import ch.bbw.zork.Room;
-import ch.bbw.zork.RoomName;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class Commands {
-    private final LinkedList<String> commandsList = new LinkedList<>();
     private final Game game;
     private final Player player;
     private final Map<String, Room> rooms;
 
-    public Commands(Player player, Map<String, Room> rooms, Game game) {
-        this.rooms = rooms;
-        this.player = player;
+    public Commands(Game game) {
+        this.rooms = game.getRooms();
+        this.player = game.getPlayer();
         this.game = game;
-        fillCommandsList();
     }
 
-    private void fillCommandsList() {
-        commandsList.add("go");
-        commandsList.add("show");
-        commandsList.add("drop");
-        commandsList.add("grab");
-        commandsList.add("back");
-        commandsList.add("map");
-        commandsList.add("help");
-    }
-
-    public void checkCommands(String[] words) {
-        if (commandsList.contains(words[0])) {
-            executeCommand(words);
-        } else {
-            System.out.println("Dieser Befehl existiert nicht! Probier es noch einmal.");
-            //TODO Error Handling
-        }
-    }
-
-    private void executeCommand(String[] words) {
-        switch (words[0].trim()) {
+    public void executeCommand(String[] words) {
+        switch (words[0]) {
             case "go":
                 commandGo(words);
                 break;
@@ -65,6 +40,8 @@ public class Commands {
             case "map":
                 commandMap();
                 break;
+            default:
+                System.err.println("Der Befehl " + words[0] + " existiert nicht");
         }
     }
 
@@ -102,6 +79,8 @@ public class Commands {
                 case "room":
                     commandShowRoom();
                     break;
+                default:
+                    Printer.parameterDoesNotExists(words[1]);
             }
         } else {
             System.out.println("Bitte gebe einen Parameter an!");
@@ -119,39 +98,23 @@ public class Commands {
         if (words.length >= 3) {
             switch (words[2]) {
                 case "--global":
-                    commandShowGlobalItems();
+                    Printer.printItems(Arrays.stream(Item.values()).collect(Collectors.toList()));
                     break;
                 case "--winning":
-                    commandShowWinningItems();
+                    Printer.printItems(new ArrayList<>(game.getWinningItems()));
                     break;
+                default:
+                    Printer.parameterDoesNotExists(words[2]);
             }
         } else {
             List<Item> items = rooms.get(player.getCurrentRoom().name).getItems();
-            for (Item item : items) {
-                System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
-            }
-        }
-    }
-
-    private void commandShowGlobalItems() {
-        for (Map.Entry<String, Room> entry : rooms.entrySet()) {
-            for (Item item : entry.getValue().getItems()) {
-                System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
-            }
-        }
-    }
-
-    private void commandShowWinningItems() {
-        for (Item item : game.getWinningItems()) {
-            System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
+            Printer.printItems(items);
         }
     }
 
     private void commandShowBackpack() {
-        for (Item item : player.getBackpack().getItems()) {
-            System.out.println("{ name: " + item.getName() + ", gewicht: " + item.getWeight() + " }");
-        }
-        System.out.println("Verbleibendes Gewicht: " + (Backpack.MAX_WEIGHT_G - player.getBackpack().getCurrentWeight()));
+        Printer.printItems(player.getBackpack().getItems());
+        System.out.println("Verbleibendes Gewicht: " + player.getBackpack().getRemainingCapacity());
     }
 
     private void commandShowRoom() {
@@ -166,14 +129,14 @@ public class Commands {
             backpack.clear();
             System.out.println("Alle Items wurden aus dem Rucksack entfernt");
         } else {
-            List<Item> items = backpack.getItems().stream().filter(it -> it.getName().equals(parameter)).collect(Collectors.toList());
+            List<Item> items = backpack.getItems().stream().filter(it -> it.name.equals(parameter)).collect(Collectors.toList());
             if (items.size() < 1) {
                 System.out.println("Das Item " + parameter + " hast du nicht in deinem Rucksack");
             } else {
                 Item item = items.get(0);
                 room.addItem(item);
-                backpack.removeItem(item.getName());
-                System.out.println("Das Item " + item.getName() + " wurde fallengelassen");
+                backpack.removeItem(item.name);
+                System.out.println("Das Item " + item.name + " wurde fallengelassen");
             }
         }
         checkGameWon();
@@ -183,9 +146,9 @@ public class Commands {
         if (game.getPlayer().getCurrentRoom().equals(RoomName.EXIT_ROOM)) {
             AtomicReference<Boolean> allNeededItemsDropped = new AtomicReference<>(true);
             List<String> items = new LinkedList<>();
-            game.getRooms().get(game.getPlayer().getCurrentRoom().name).getItems().forEach(it -> items.add(it.getName()));
+            game.getRooms().get(game.getPlayer().getCurrentRoom().name).getItems().forEach(it -> items.add(it.name));
             List<String> neededItems = new LinkedList<>();
-            game.getWinningItems().forEach(it -> neededItems.add(it.getName()));
+            game.getWinningItems().forEach(it -> neededItems.add(it.name));
 
             neededItems.forEach(it -> {
                 if (!items.contains(it)) {
@@ -201,12 +164,14 @@ public class Commands {
     private void commandGrab(String itemName) {
         Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
         List<Item> items = room.getItems().stream()
-                .filter(it -> it.getName().equals(itemName)).collect(Collectors.toList());
+                .filter(it -> it.name.equals(itemName)).collect(Collectors.toList());
         if (items.size() < 1) {
             System.out.println("Das Item " + itemName + " existiert nicht in diesem Raum");
         } else {
-            game.getPlayer().getBackpack().addItem(items.get(0));
-            room.removeItem(itemName);
+            boolean succeed = game.getPlayer().getBackpack().addItem(items.get(0));
+            if (succeed) {
+                room.removeItem(itemName);
+            }
         }
     }
 
@@ -233,6 +198,7 @@ public class Commands {
 
     private void commandMap() {
         Printer.printRoomsWithItems(rooms);
+        Printer.printMap();
     }
 
     private Map<String, Room> getNearbyRooms() {

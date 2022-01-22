@@ -2,18 +2,21 @@ package ch.bbw.zork;
 
 public class Player {
     private final Backpack backpack;
-    private final String name;
     private RoomName currentRoom;
     private RoomName lastRoom;
+    private String name;
 
-    public Player(String name) {
+    public Player() {
         backpack = new Backpack();
-        this.name = name;
         currentRoom = RoomName.EXIT_ROOM;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Backpack getBackpack() {
