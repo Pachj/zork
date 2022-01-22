@@ -22,7 +22,7 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-    
+
 		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 		<dependency>
 			<groupId>org.assertj</groupId>
