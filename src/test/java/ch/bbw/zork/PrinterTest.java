@@ -98,15 +98,15 @@ public class PrinterTest {
     @Test
     public void shouldCheckIfItemsWillBePrinted() {
 
-        Item itemOne = new Item(10, "ItemOne");
-        Item itemTwo = new Item(10, "ItemTwo");
+        Item book = Item.BUCH;
+        Item apple = Item.APFEL;
         List<Item> itemList = new LinkedList<>();
-        itemList.add(itemOne);
-        itemList.add(itemTwo);
+        itemList.add(book);
+        itemList.add(apple);
 
         Printer.printItems(itemList);
         assertThat(outContent.toString())
-                .contains(itemOne.getName(), itemTwo.getName());
+                .contains(book.name, apple.name);
 
     }
 
@@ -114,11 +114,11 @@ public class PrinterTest {
     @Test
     public void shouldCheckIfRoomsAndItemsWillBePrinted() {
 
-        Item itemOne = new Item(10, "ItemOne");
-        Item itemTwo = new Item(10, "ItemTwo");
+        Item book = Item.BUCH;
+        Item apple = Item.APFEL;
         List<Item> itemList = new LinkedList<>();
-        itemList.add(itemOne);
-        itemList.add(itemTwo);
+        itemList.add(book);
+        itemList.add(apple);
 
         Room room = new Room("Room", itemList);
 
@@ -127,7 +127,7 @@ public class PrinterTest {
 
         Printer.printRoomsWithItems(rooms);
         assertThat(outContent.toString())
-                .contains(itemOne.getName(), itemTwo.getName(), room.getName());
+                .contains(book.name, apple.name, room.getName());
 
     }
 

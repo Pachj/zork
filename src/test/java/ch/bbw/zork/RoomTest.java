@@ -13,14 +13,14 @@ public class RoomTest {
     //Tests for method removeItem()
     @Test
     public void shouldRemoveItemFromRoomWithOneItem() {
-        Item item = new Item(10, "Item");
+        Item book = Item.BUCH;
         List<Item> itemList = new LinkedList<>();
-        itemList.add(item);
+        itemList.add(book);
         Room room = new Room("Room", itemList);
 
         assertThat(room.getItems().size()).isEqualTo(1);
 
-        room.removeItem("Item");
+        room.removeItem(book.name);
 
         assertThat(room.getItems().size()).isZero();
     }
@@ -39,11 +39,11 @@ public class RoomTest {
     //Tests for method addItems()
     @Test
     public void shouldAddListOfItemsToEmptyList() {
-        Item itemOne = new Item(10, "ItemOne");
-        Item itemTwo = new Item(10, "ItemTwo");
+        Item book = Item.BUCH;
+        Item apple = Item.APFEL;
         List<Item> itemList = new LinkedList<>();
-        itemList.add(itemOne);
-        itemList.add(itemTwo);
+        itemList.add(book);
+        itemList.add(apple);
         List<Item> emptyList = new LinkedList<>();
         Room room = new Room("Room", emptyList);
 
@@ -56,17 +56,17 @@ public class RoomTest {
 
     @Test
     public void shouldAddListOfItemsToExistingList() {
-        Item itemOne = new Item(10, "ItemOne");
-        Item itemTwo = new Item(10, "ItemTwo");
+        Item book = Item.BUCH;
+        Item apple = Item.APFEL;
         List<Item> currentList = new LinkedList<>();
-        currentList.add(itemOne);
-        currentList.add(itemTwo);
+        currentList.add(book);
+        currentList.add(apple);
 
-        Item itemThree = new Item(10, "ItemThree");
-        Item itemFour = new Item(10, "ItemFour");
+        Item bierkrug = Item.BIERKRUG;
+        Item soil = Item.ERDE;
         List<Item> addedList = new LinkedList<>();
-        addedList.add(itemThree);
-        addedList.add(itemFour);
+        addedList.add(bierkrug);
+        addedList.add(soil);
 
         Room room = new Room("Room", currentList);
 
@@ -75,39 +75,39 @@ public class RoomTest {
         room.addItems(addedList);
 
         assertThat(room.getItems().size()).isEqualTo(4);
-        assertThat(room.getItems().get(3)).isEqualTo(itemFour);
+        assertThat(room.getItems().get(3)).isEqualTo(soil);
     }
 
     //Tests for method addItem()
     @Test
     public void shouldAddItemToEmptyList() {
-        Item itemOne = new Item(10, "ItemOne");
+        Item book = Item.BUCH;
         List<Item> emptyList = new LinkedList<>();
         Room room = new Room("Room", emptyList);
 
         assertThat(room.getItems().size()).isZero();
 
-        room.addItem(itemOne);
+        room.addItem(book);
 
         assertThat(room.getItems().size()).isEqualTo(1);
     }
 
     @Test
     public void shouldAddItemToExistingList() {
-        Item itemOne = new Item(10, "ItemOne");
-        Item itemTwo = new Item(10, "ItemTwo");
+        Item book = Item.BUCH;
+        Item apple = Item.APFEL;
         List<Item> currentList = new LinkedList<>();
-        currentList.add(itemOne);
-        currentList.add(itemTwo);
-        Item itemThree = new Item(10, "ItemThree");
+        currentList.add(book);
+        currentList.add(apple);
+        Item soil = Item.ERDE;
 
         Room room = new Room("Room", currentList);
 
         assertThat(room.getItems().size()).isEqualTo(2);
 
-        room.addItem(itemThree);
+        room.addItem(soil);
 
         assertThat(room.getItems().size()).isEqualTo(3);
-        assertThat(room.getItems().get(2)).isEqualTo(itemThree);
+        assertThat(room.getItems().get(2)).isEqualTo(soil);
     }
 }
