@@ -127,7 +127,7 @@ public class Commands {
         if (parameter.equals("--all")) {
             if (backpack.getItems().size() > 1) {
                 room.addItems(backpack.getItems());
-            } else {
+            } else if (backpack.getItems().size() != 0) {
                 room.addItem(backpack.getItems().get(0));
             }
             backpack.clear();
