@@ -166,7 +166,6 @@ public class Commands {
             });
             if (allNeededItemsDropped.get()) {
                 Printer.won();
-                System.exit(0);
             }
         }
     }

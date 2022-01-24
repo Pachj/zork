@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -179,14 +180,13 @@ public class CommandsTest {
         Commands commands = new Commands(game);
         String[] command = {"drop", "--all"};
 
-        System.out.println(game.getPlayer().getCurrentRoom().name);
-
-        List<Item> items = game.getWinningItems().stream().collect(Collectors.toList());
+        List<Item> items = new ArrayList<>(game.getWinningItems());
 
         items.forEach(it -> {
-            game.getPlayer().getBackpack().addItem(it);
-            commands.executeCommand(command);
+            game.getRooms().get(RoomName.EXIT_ROOM.name).addItems(items);
         });
+
+        commands.executeCommand(command);
 
         String won =
                 "                                                                                                                                                       \n" +
