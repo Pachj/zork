@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.singletonList;
-
 public class Game {
     private final Map<String, Room> rooms;
     private final Set<Item> winningItems;
@@ -38,24 +36,20 @@ public class Game {
         return player;
     }
 
-    private String choosePlayerName() {
+    public String choosePlayerName() {
         Parser parser = new Parser();
         String name = "";
         System.out.println("Gib deinen Namen ein: ");
         try {
             name = parser.readLine();
             if (name.isBlank()) {
-                choosePlayerName();
-            } else {
-                System.out.println("Dein Name: " + name);
+                name = "Neuling";
             }
+            System.out.println("Dein Name: " + name);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ein Fehler ist aufgetreten! Versuche es noch einmal.");
             choosePlayerName();
-        }
-        if (name.isEmpty()) {
-            name = "Neuling";
         }
         return name;
     }
@@ -128,20 +122,20 @@ public class Game {
     private void initialiseDoors() {
         rooms.get(RoomName.TAVERNE.name).setDoors(
                 Map.of(
-                    RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name)
-        ));
+                        RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name)
+                ));
 
         rooms.get(RoomName.OUTSIDE.name).setDoors(
                 Map.of(
                         RoomName.LAB.name, rooms.get(RoomName.LAB.name),
                         RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name),
                         RoomName.TAVERNE.name, rooms.get(RoomName.TAVERNE.name)
-        ));
+                ));
 
         rooms.get(RoomName.LAB.name).setDoors(
                 Map.of(
                         RoomName.OUTSIDE.name, rooms.get(RoomName.OUTSIDE.name)
-        ));
+                ));
 
 
         rooms.get(RoomName.LIVING_ROOM.name).setDoors(
@@ -150,34 +144,34 @@ public class Game {
                         RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name),
                         RoomName.BALCONY.name, rooms.get(RoomName.BALCONY.name),
                         RoomName.EXIT_ROOM.name, rooms.get(RoomName.EXIT_ROOM.name)
-        ));
+                ));
 
         rooms.get(RoomName.OFFICE.name).setDoors(
                 Map.of(
                         RoomName.KITCHEN.name, rooms.get(RoomName.KITCHEN.name),
                         RoomName.WC.name, rooms.get(RoomName.WC.name),
                         RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name)
-        ));
+                ));
 
         rooms.get(RoomName.KITCHEN.name).setDoors(
                 Map.of(
                         RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name)
-        ));
+                ));
 
         rooms.get(RoomName.WC.name).setDoors(
                 Map.of(
                         RoomName.OFFICE.name, rooms.get(RoomName.OFFICE.name)
-        ));
+                ));
 
         rooms.get(RoomName.BALCONY.name).setDoors(
                 Map.of(
                         RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name)
-        ));
+                ));
 
         rooms.get(RoomName.EXIT_ROOM.name).setDoors(
                 Map.of(
                         RoomName.LIVING_ROOM.name, rooms.get(RoomName.LIVING_ROOM.name)
-        ));
+                ));
     }
 
     private void initialiseWinningItems() {

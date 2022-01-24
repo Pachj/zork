@@ -17,24 +17,23 @@ public class GameTest {
         InputStream inputStream = new ByteArrayInputStream(nameInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(inputStream);
 
-        Game game = new Game();
 
-        assertThat(game.getPlayer().getName()).isEqualTo(nameInput);
+        Game game = new Game();
+        String setName = game.choosePlayerName();
+
+        assertThat(setName).isEqualTo(nameInput);
     }
 
     @Test
-    public void shouldNotExceptEmptyName() {
+    public void shouldHandleEmptyName() {
         String emptyNameInput = " ";
         InputStream firstInputStream = new ByteArrayInputStream(emptyNameInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(firstInputStream);
 
-        String nameInput = "Name";
-        InputStream secondInputStream = new ByteArrayInputStream(nameInput.getBytes(StandardCharsets.UTF_8));
-        System.setIn(secondInputStream);
-
         Game game = new Game();
+        String setName = game.choosePlayerName();
 
-        assertThat(game.getPlayer().getName()).isEqualTo(nameInput);
+        assertThat(setName).isEqualTo("Neuling");
     }
 
 
