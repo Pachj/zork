@@ -102,7 +102,7 @@ public class Printer {
     }
 
     public static void parameterDoesNotExists(String parameter) {
-        System.out.println("Der Parameter " + parameter + " existiert nicht");
+        System.out.println("Der Parameter " + parameter + " existiert nicht!");
     }
 
     public static void won() {
@@ -196,6 +196,10 @@ public class Printer {
 
     public static void parameterIsEmptyError() {
         System.out.println("Du musst einen Parameter angeben!");
+    }
+
+    public static void startRoomError() {
+        System.out.println("Du befindest dich im Startraum und kannst deshalb nicht zurück.");
     }
 
     private static void sleep(long duration) {
