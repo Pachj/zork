@@ -14,6 +14,7 @@ public class Game {
     private final Commands commands;
     private final Parser parser;
     public static final int NEEDED_ITEMS = 5;
+    private boolean running = true;
 
     public Game() {
         rooms = new HashMap<>();
@@ -213,13 +214,17 @@ public class Game {
         Printer.help();
 
         System.out.println("Gebe deinen ersten Befehl ein:");
-        while (true) {
+        while (running) {
             try {
                 commands.executeCommand(parser.readWords());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void close() {
+        running = false;
     }
 
     private void sleep(long duration) {

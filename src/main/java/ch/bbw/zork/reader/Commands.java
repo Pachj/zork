@@ -166,6 +166,7 @@ public class Commands {
             });
             if (allNeededItemsDropped.get()) {
                 Printer.won();
+                game.close();
             }
         }
     }
