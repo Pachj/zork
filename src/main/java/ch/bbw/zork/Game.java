@@ -45,7 +45,6 @@ public class Game {
             if (name.isBlank()) {
                 name = "Neuling";
             }
-            System.out.println("Dein Name: " + name);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ein Fehler ist aufgetreten! Versuche es noch einmal.");
@@ -194,7 +193,7 @@ public class Game {
 
         System.out.println("\nDiese Items benötigst du:\n");
         sleep(1000);
-        Printer.printItemsDelayed(new ArrayList<>(winningItems));
+        Printer.printItems(new ArrayList<>(winningItems), 1_000);
 
         Printer.go();
         sleep(5000);
@@ -225,7 +224,7 @@ public class Game {
 
     private void sleep(long duration) {
         try {
-            Thread.sleep(duration);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

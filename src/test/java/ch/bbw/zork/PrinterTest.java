@@ -104,30 +104,9 @@ public class PrinterTest {
         itemList.add(book);
         itemList.add(apple);
 
-        Printer.printItems(itemList);
+        Printer.printItems(itemList, 0);
         assertThat(outContent.toString())
                 .contains(book.name, apple.name);
-
-    }
-
-    // Tests for method printRoomWithItems()
-    @Test
-    public void shouldCheckIfRoomsAndItemsWillBePrinted() {
-
-        Item book = Item.BUCH;
-        Item apple = Item.APFEL;
-        List<Item> itemList = new LinkedList<>();
-        itemList.add(book);
-        itemList.add(apple);
-
-        Room room = new Room("Room", itemList);
-
-        Map<String, Room> rooms = new HashMap<>();
-        rooms.put(room.getName(), room);
-
-        Printer.printRoomsWithItems(rooms);
-        assertThat(outContent.toString())
-                .contains(book.name, apple.name, room.getName());
 
     }
 

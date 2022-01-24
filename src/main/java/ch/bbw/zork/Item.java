@@ -40,4 +40,12 @@ public enum Item {
         this.name = name;
         this.weight = weight;
     }
+
+    public String getWeight() {
+        long weight_KG = weight / 1000;
+        if (weight_KG >= 1) {
+            return weight_KG + " kg";
+        }
+        return weight + " g";
+    }
 }
