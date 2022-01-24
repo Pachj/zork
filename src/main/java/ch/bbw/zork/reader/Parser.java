@@ -22,4 +22,12 @@ public class Parser {
     public String readLine() throws IOException {
         return reader.readLine();
     }
+
+    public void close() {
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

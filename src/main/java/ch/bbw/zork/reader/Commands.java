@@ -98,22 +98,22 @@ public class Commands {
         if (words.length >= 3) {
             switch (words[2]) {
                 case "--global":
-                    Printer.printItems(Arrays.stream(Item.values()).collect(Collectors.toList()));
+                    Printer.printItems(Arrays.stream(Item.values()).collect(Collectors.toList()), 0);
                     break;
                 case "--winning":
-                    Printer.printItems(new ArrayList<>(game.getWinningItems()));
+                    Printer.printItems(new ArrayList<>(game.getWinningItems()), 0);
                     break;
                 default:
                     Printer.parameterDoesNotExists(words[2]);
             }
         } else {
             List<Item> items = rooms.get(player.getCurrentRoom().name).getItems();
-            Printer.printItems(items);
+            Printer.printItems(items, 0);
         }
     }
 
     private void commandShowBackpack() {
-        Printer.printItems(player.getBackpack().getItems());
+        Printer.printItems(player.getBackpack().getItems(), 0);
         System.out.println("Verbleibendes Gewicht: " + player.getBackpack().getRemainingCapacity());
     }
 
@@ -125,7 +125,11 @@ public class Commands {
         Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
         Backpack backpack = game.getPlayer().getBackpack();
         if (parameter.equals("--all")) {
-            room.addItems(backpack.getItems());
+            if (backpack.getItems().size() > 1) {
+                room.addItems(backpack.getItems());
+            } else {
+                room.addItem(backpack.getItems().get(0));
+            }
             backpack.clear();
             System.out.println("Alle Items wurden aus dem Rucksack entfernt");
         } else {
@@ -197,7 +201,6 @@ public class Commands {
     }
 
     private void commandMap() {
-        Printer.printRoomsWithItems(rooms);
         Printer.printMap();
     }
 
