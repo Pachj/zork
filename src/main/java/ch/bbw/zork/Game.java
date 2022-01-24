@@ -229,7 +229,7 @@ public class Game {
 
     private void sleep(long duration) {
         try {
-            Thread.sleep(0);
+            Thread.sleep(duration);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
