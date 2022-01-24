@@ -26,10 +26,10 @@ public class Commands {
                 commandShow(words);
                 break;
             case "drop":
-                commandDrop(words[1]);
+                commandDrop(words);
                 break;
             case "grab":
-                commandGrab(words[1]);
+                commandGrab(words);
                 break;
             case "back":
                 commandBack();
@@ -83,7 +83,7 @@ public class Commands {
                     Printer.parameterDoesNotExists(words[1]);
             }
         } else {
-            System.out.println("Bitte gebe einen Parameter an!");
+            Printer.parameterIsEmptyError();
         }
     }
 
@@ -121,29 +121,34 @@ public class Commands {
         System.out.println(player.getCurrentRoom().name);
     }
 
-    private void commandDrop(String parameter) {
-        Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
-        Backpack backpack = game.getPlayer().getBackpack();
-        if (parameter.equals("--all")) {
-            if (backpack.getItems().size() > 1) {
-                room.addItems(backpack.getItems());
-            } else if (backpack.getItems().size() != 0) {
-                room.addItem(backpack.getItems().get(0));
-            }
-            backpack.clear();
-            System.out.println("Alle Items wurden aus dem Rucksack entfernt");
-        } else {
-            List<Item> items = backpack.getItems().stream().filter(it -> it.name.equals(parameter)).collect(Collectors.toList());
-            if (items.size() < 1) {
-                System.out.println("Das Item " + parameter + " hast du nicht in deinem Rucksack");
+    private void commandDrop(String[] words) {
+        if (words.length >= 2) {
+            String parameter = words[1];
+            Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
+            Backpack backpack = game.getPlayer().getBackpack();
+            if (parameter.equals("--all")) {
+                if (backpack.getItems().size() > 1) {
+                    room.addItems(backpack.getItems());
+                } else if (backpack.getItems().size() != 0) {
+                    room.addItem(backpack.getItems().get(0));
+                }
+                backpack.clear();
+                System.out.println("Alle Items wurden aus dem Rucksack entfernt");
             } else {
-                Item item = items.get(0);
-                room.addItem(item);
-                backpack.removeItem(item.name);
-                System.out.println("Das Item " + item.name + " wurde fallengelassen");
+                List<Item> items = backpack.getItems().stream().filter(it -> it.name.equals(parameter)).collect(Collectors.toList());
+                if (items.size() < 1) {
+                    System.out.println("Das Item " + parameter + " hast du nicht in deinem Rucksack");
+                } else {
+                    Item item = items.get(0);
+                    room.addItem(item);
+                    backpack.removeItem(item.name);
+                    System.out.println("Das Item " + item.name + " wurde fallengelassen");
+                }
             }
+            checkGameWon();
+        } else {
+            Printer.parameterIsEmptyError();
         }
-        checkGameWon();
     }
 
     private void checkGameWon() {
@@ -165,17 +170,22 @@ public class Commands {
         }
     }
 
-    private void commandGrab(String itemName) {
-        Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
-        List<Item> items = room.getItems().stream()
-                .filter(it -> it.name.equals(itemName)).collect(Collectors.toList());
-        if (items.size() < 1) {
-            System.out.println("Das Item " + itemName + " existiert nicht in diesem Raum");
-        } else {
-            boolean succeed = game.getPlayer().getBackpack().addItem(items.get(0));
-            if (succeed) {
-                room.removeItem(itemName);
+    private void commandGrab(String[] words) {
+        if (words.length >= 2) {
+            String itemName = words[1];
+            Room room = game.getRooms().get(game.getPlayer().getCurrentRoom().name);
+            List<Item> items = room.getItems().stream()
+                    .filter(it -> it.name.equals(itemName)).collect(Collectors.toList());
+            if (items.size() < 1) {
+                System.out.println("Das Item " + itemName + " existiert nicht in diesem Raum");
+            } else {
+                boolean succeed = game.getPlayer().getBackpack().addItem(items.get(0));
+                if (succeed) {
+                    room.removeItem(itemName);
+                }
             }
+        } else {
+            Printer.parameterIsEmptyError();
         }
     }
 

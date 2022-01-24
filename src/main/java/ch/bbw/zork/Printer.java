@@ -194,6 +194,10 @@ public class Printer {
                 "                                        ____________________                   ____________________\n");
     }
 
+    public static void parameterIsEmptyError() {
+        System.out.println("Du musst einen Parameter angeben!");
+    }
+
     private static void sleep(long duration) {
         try {
             Thread.sleep(0);
