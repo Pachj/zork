@@ -182,9 +182,7 @@ public class CommandsTest {
 
         List<Item> items = new ArrayList<>(game.getWinningItems());
 
-        items.forEach(it -> {
-            game.getRooms().get(RoomName.EXIT_ROOM.name).addItems(items);
-        });
+        items.forEach(it -> game.getRooms().get(RoomName.EXIT_ROOM.name).addItems(items));
 
         commands.executeCommand(command);
 
