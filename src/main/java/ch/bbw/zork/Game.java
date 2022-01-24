@@ -60,62 +60,62 @@ public class Game {
     }
 
     private void initialiseRooms() {
-        rooms.put(RoomName.TAVERNE.name, new Room(RoomName.TAVERNE.name,
-                List.of(Item.BIERKRUG,
-                        Item.HOCKER,
-                        Item.KAKERLAKE)));
+        List<Item> roomItems = new LinkedList<>();
+        roomItems.add(Item.BIERKRUG);
+        roomItems.add(Item.HOCKER);
+        roomItems.add(Item.KAKERLAKE);
+        rooms.put(RoomName.TAVERNE.name, new Room(RoomName.TAVERNE.name, roomItems));
+        roomItems = new LinkedList<>();
 
+        roomItems.add(Item.ROSE);
+        roomItems.add(Item.SCHMETTERLING);
+        roomItems.add(Item.RAUPE);
+        roomItems.add(Item.SCHAUFEL);
+        rooms.put(RoomName.OUTSIDE.name, new Room(RoomName.OUTSIDE.name, roomItems));
+        roomItems = new LinkedList<>();
 
-        rooms.put(RoomName.OUTSIDE.name, new Room(RoomName.OUTSIDE.name,
-                List.of(Item.ROSE,
-                        Item.SCHMETTERLING,
-                        Item.RAUPE,
-                        Item.SCHAUFEL)));
+        roomItems.add(Item.REAGENZGLAS);
+        roomItems.add(Item.ZAUBERTRANK);
+        roomItems.add(Item.SKALPELL);
+        roomItems.add(Item.APFEL);
+        rooms.put(RoomName.LAB.name, new Room(RoomName.LAB.name, roomItems));
+        roomItems = new LinkedList<>();
 
+        roomItems.add(Item.FERNSEHER);
+        roomItems.add(Item.KRUEMEL);
+        roomItems.add(Item.PENNY);
+        roomItems.add(Item.MONOPOLY);
+        roomItems.add(Item.ERDE);
+        rooms.put(RoomName.LIVING_ROOM.name, new Room(RoomName.LIVING_ROOM.name, roomItems));
+        roomItems = new LinkedList<>();
 
-        rooms.put(RoomName.LAB.name, new Room(RoomName.LAB.name,
-                List.of(Item.REAGENZGLAS,
-                        Item.ZAUBERTRANK,
-                        Item.SKALPELL,
-                        Item.APFEL)));
+        roomItems.add(Item.HANDY);
+        roomItems.add(Item.PUTZMITTEL);
+        roomItems.add(Item.STROMKABEL);
+        roomItems.add(Item.SANDWICH);
+        rooms.put(RoomName.OFFICE.name, new Room(RoomName.OFFICE.name, roomItems));
+        roomItems = new LinkedList<>();
 
+        roomItems.add(Item.PALME);
+        roomItems.add(Item.GRILL);
+        roomItems.add(Item.FLEISCH);
+        roomItems.add(Item.SCHLUESSEL);
+        roomItems.add(Item.SCHROTFLINTE);
+        rooms.put(RoomName.BALCONY.name, new Room(RoomName.BALCONY.name, roomItems));
+        roomItems = new LinkedList<>();
 
-        rooms.put(RoomName.LIVING_ROOM.name, new Room(RoomName.LIVING_ROOM.name,
-                List.of(Item.FERNSEHER,
-                        Item.KRUEMEL,
-                        Item.PENNY,
-                        Item.MONOPOLY,
-                        Item.ERDE)));
+        roomItems.add(Item.WC_PAPIER);
+        roomItems.add(Item.BUCH);
+        roomItems.add(Item.WLAN_ROUTER);
+        rooms.put(RoomName.WC.name, new Room(RoomName.WC.name, roomItems));
+        roomItems = new LinkedList<>();
 
+        roomItems.add(Item.MESSER);
+        roomItems.add(Item.LAUCH);
+        roomItems.add(Item.WASSERFLASCHE);
+        rooms.put(RoomName.KITCHEN.name, new Room(RoomName.KITCHEN.name, roomItems));
 
-        rooms.put(RoomName.OFFICE.name, new Room(RoomName.OFFICE.name,
-                List.of(Item.HANDY,
-                        Item.PUTZMITTEL,
-                        Item.STROMKABEL,
-                        Item.SANDWICH)));
-
-
-        rooms.put(RoomName.BALCONY.name, new Room(RoomName.BALCONY.name,
-                List.of(Item.PALME,
-                        Item.GRILL,
-                        Item.FLEISCH,
-                        Item.SCHLUESSEL,
-                        Item.SCHROTFLINTE)));
-
-
-        rooms.put(RoomName.WC.name, new Room(RoomName.WC.name,
-                List.of(Item.WC_PAPIER,
-                        Item.BUCH,
-                        Item.WLAN_ROUTER)));
-
-
-        rooms.put(RoomName.KITCHEN.name, new Room(RoomName.KITCHEN.name,
-                List.of(Item.MESSER,
-                        Item.LAUCH,
-                        Item.WASSERFLASCHE)));
-
-        rooms.put(RoomName.EXIT_ROOM.name, new Room(RoomName.EXIT_ROOM.name,
-                List.of()));
+        rooms.put(RoomName.EXIT_ROOM.name, new Room(RoomName.EXIT_ROOM.name, new LinkedList<>()));
     }
 
     private void initialiseDoors() {
