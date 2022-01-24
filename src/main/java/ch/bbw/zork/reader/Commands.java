@@ -197,8 +197,7 @@ public class Commands {
             player.setCurrentRoom(player.getLastRoom());
             player.setLastRoom(tmpRoom);
             System.out.println("Du befindest dich jetzt im Raum " + player.getCurrentRoom().name);
-        }
-        else {
+        } else {
             Printer.startRoomError();
         }
     }

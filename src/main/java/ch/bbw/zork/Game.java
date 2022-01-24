@@ -8,12 +8,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
+    public static final int NEEDED_ITEMS = 5;
     private final Map<String, Room> rooms;
     private final Set<Item> winningItems;
     private final Player player;
     private final Commands commands;
     private final Parser parser;
-    public static final int NEEDED_ITEMS = 5;
     private boolean running = true;
 
     public Game() {
