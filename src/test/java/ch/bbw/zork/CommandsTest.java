@@ -106,7 +106,7 @@ public class CommandsTest {
         commands.executeCommand(command);
 
         assertThat(outContent.toString())
-                .isEqualToIgnoringNewLines("Bitte gebe einen Parameter an!");
+                .isEqualToIgnoringNewLines("Du musst einen Parameter angeben!");
     }
 
     @Test
